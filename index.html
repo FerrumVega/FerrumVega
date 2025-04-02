@@ -1,95 +1,179 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FerrumVega</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    
     <style>
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        
-        .content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        h1 {
-            color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 2.5em;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        
-        .widgets-container {
-            display: flex;
-            gap: 20px;
-            max-width: 1200px;
-            margin-top: 20px;
-        }
-        
-        .telegram-widget {
-            flex: 1;
-            min-width: 0;
-            padding: 10px;
-        }
-        
-        .discussion-header {
-            color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            text-align: center;
-            background: linear-gradient(90deg, #343638, #555);
-            padding: 10px;
-            border-radius: 5px;
-        }
-        
-        @media (max-width: 768px) {
-            .widgets-container {
-                flex-direction: column;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="content">
-        <h1>Я - FerrumVega</h1>
-        <p>Весь контент, размещённый на этом сайте, целиком и полностью принадлежит FerrumVega. Сайт находится под MIT лицензией.</p>
-    </div>
+      body {
+        background: #121212;
+        color: #e0e0e0;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        overflow-x: hidden;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column
+      }
 
-    <div class="widgets-container">
-        <div class="telegram-widget">
-            <script async src="https://telegram.org/js/telegram-widget.js?22" 
-                    data-telegram-post="ferrumvega/4" 
-                    data-width="100%" 
-                    data-color="343638" 
-                    data-dark="1" 
-                    data-dark-color="FFFFFF"></script>
-        </div>
-        
-        <div class="telegram-widget">
-            <div class="discussion-header">Напишите FerrumVega в комментариях!</div>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" 
-                    data-telegram-discussion="FerrumVega/39" 
-                    data-comments-limit="5" 
-                    data-colorful="1" 
-                    data-color="343638" 
-                    data-dark="1" 
-                    data-dark-color="FFFFFF"></script>
-        </div>
+      .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        flex: 1
+      }
+
+      h1 {
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 2.5em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        position: relative;
+        text-align: center;
+        margin: 40px 0
+      }
+
+      .epic-title {
+        display: inline-block;
+        position: relative
+      }
+
+      .epic-title::before,
+      .epic-title::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 50vw;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, #ff4d4d, #f9cb28, #ff4d4d, transparent);
+        transform: scaleX(0);
+        transform-origin: center;
+        animation: expandLine 2s ease-out forwards;
+        animation-delay: .5s
+      }
+
+      .epic-title::before {
+        right: 100%;
+        margin-right: 20px
+      }
+
+      .epic-title::after {
+        left: 100%;
+        margin-left: 20px
+      }
+
+      @keyframes expandLine {
+        to {
+          transform: scaleX(1)
+        }
+      }
+
+      .widgets-container {
+        display: flex;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 50px auto 20px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUpWidgets 1s forwards;
+        animation-delay: 2.5s
+      }
+
+      @keyframes fadeInUpWidgets {
+        to {
+          opacity: 1;
+          transform: translateY(0)
+        }
+      }
+
+      .telegram-widget {
+        flex: 1;
+        min-width: 0;
+        padding: 10px
+      }
+
+      .discussion-header {
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        text-align: center;
+        background: linear-gradient(90deg, #343638, #555);
+        padding: 10px;
+        border-radius: 5px
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        color: #888;
+        font-size: .9em;
+        border-top: 1px solid #333
+      }
+
+      footer a {
+        color: #f9cb28;
+        text-decoration: none;
+        transition: color .3s
+      }
+
+      footer a:hover {
+        color: #ff4d4d;
+        text-decoration: underline
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 5px
+      }
+
+      @media (max-width:768px) {
+        .widgets-container {
+          flex-direction: column
+        }
+
+        h1 {
+          font-size: 2em
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>
+        <span class="epic-title">Я - FerrumVega</span>
+      </h1>
+      <p>Весь контент, размещённый на этом сайте, целиком и полностью принадлежит FerrumVega. Сайт находится под MIT лицензией.</p>
     </div>
-</body>
+    <div class="widgets-container">
+      <div class="telegram-widget">
+        <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="ferrumvega/4" data-width="100%" data-color="343638" data-dark="1" data-dark-color="FFFFFF"></script>
+      </div>
+      <div class="telegram-widget">
+        <div class="discussion-header">Напишите FerrumVega в комментариях!</div>
+        <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion="FerrumVega/39" data-comments-limit="5" data-colorful="1" data-color="343638" data-dark="1" data-dark-color="FFFFFF"></script>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-content">
+        <div>© 2025 FerrumVega. Все права защищены.</div>
+        <div>Контактная почта: <a href="mailto:me@ferrumvega.xyz">me@ferrumvega.xyz</a>
+        </div>
+        <div>
+          <a href="https://telegra.ph/FerrumVega-01-08" target="_blank">Отказ от ответственности</a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
