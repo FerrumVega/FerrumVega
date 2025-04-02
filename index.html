@@ -1,28 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Widget Example</title>
+    <!-- Подключаем Montserrat Black через Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    
     <style>
-        body { 
-            background: #000; 
-            text-align: center; 
-            padding: 50px;
-            font-family: Arial;
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
         }
-        a {
-            display: inline-block;
-            margin: 20px;
-            padding: 15px 25px;
-            background: #0088cc;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
+        
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .widgets-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+        
+        .telegram-widget {
+            flex: 1;
+            min-width: 0;
+            padding: 10px;
+        }
+        
+        .discussion-header {
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+            background: linear-gradient(90deg, #343638, #555);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .widgets-container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-    <h2 style="color: #fff;">FerrumVega</h2>
-    <a href="https://t.me/s/ferrumvega" target="_blank">Открыть канал</a>
-    <a href="https://ferrumvega.xyz" style="background: #ff5555;">EPD</a>
+    <div class="content">
+        <h1>Я - FerrumVega</h1>
+        <p>Весь контент, размещённый на этом сайте, целиком и полностью принадлежит FerrumVega. Сайт находится под MIT лицензией.</p>
+    </div>
+
+    <div class="widgets-container">
+        <div class="telegram-widget">
+            <script async src="https://telegram.org/js/telegram-widget.js?22" 
+                    data-telegram-post="ferrumvega/4" 
+                    data-width="100%" 
+                    data-color="343638" 
+                    data-dark="1" 
+                    data-dark-color="FFFFFF"></script>
+        </div>
+        
+        <div class="telegram-widget">
+            <div class="discussion-header">Напишите FerrumVega в комментариях!</div>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" 
+                    data-telegram-discussion="FerrumVega/39" 
+                    data-comments-limit="5" 
+                    data-colorful="1" 
+                    data-color="343638" 
+                    data-dark="1" 
+                    data-dark-color="FFFFFF"></script>
+        </div>
+    </div>
 </body>
 </html>
