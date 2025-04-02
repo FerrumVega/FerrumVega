@@ -8,23 +8,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
       body {
         background: #121212;
         color: #e0e0e0;
         font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        overflow-x: hidden;
         min-height: 100vh;
         display: flex;
-        flex-direction: column
+        flex-direction: column;
+        -webkit-text-size-adjust: 100%;
+        overflow-x: hidden;
+      }
+
+      .page-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        flex: 1;
       }
 
       .content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        flex: 1
+        width: 100%;
+        padding: 20px 0;
       }
 
       h1 {
@@ -36,12 +47,12 @@
         text-transform: uppercase;
         position: relative;
         text-align: center;
-        margin: 40px 0
+        margin: 40px 0;
       }
 
       .epic-title {
         display: inline-block;
-        position: relative
+        position: relative;
       }
 
       .epic-title::before,
@@ -50,52 +61,52 @@
         position: absolute;
         top: 50%;
         width: 50vw;
+        max-width: 300px;
         height: 4px;
         background: linear-gradient(90deg, transparent, #ff4d4d, #f9cb28, #ff4d4d, transparent);
         transform: scaleX(0);
         transform-origin: center;
         animation: expandLine 2s ease-out forwards;
-        animation-delay: .5s
+        animation-delay: .5s;
       }
 
       .epic-title::before {
         right: 100%;
-        margin-right: 20px
+        margin-right: 20px;
       }
 
       .epic-title::after {
         left: 100%;
-        margin-left: 20px
+        margin-left: 20px;
       }
 
       @keyframes expandLine {
         to {
-          transform: scaleX(1)
+          transform: scaleX(1);
         }
       }
 
       .widgets-container {
         display: flex;
         gap: 20px;
-        max-width: 1200px;
-        margin: 50px auto 20px;
+        width: 100%;
+        margin: 50px 0;
         opacity: 0;
         transform: translateY(30px);
         animation: fadeInUpWidgets 1s forwards;
-        animation-delay: 2.5s
+        animation-delay: 2.5s;
       }
 
       @keyframes fadeInUpWidgets {
         to {
           opacity: 1;
-          transform: translateY(0)
+          transform: translateY(0);
         }
       }
 
       .telegram-widget {
         flex: 1;
         min-width: 0;
-        padding: 10px
       }
 
       .discussion-header {
@@ -107,7 +118,7 @@
         text-align: center;
         background: linear-gradient(90deg, #343638, #555);
         padding: 10px;
-        border-radius: 5px
+        border-radius: 5px;
       }
 
       footer {
@@ -116,18 +127,19 @@
         margin-top: 40px;
         color: #888;
         font-size: .9em;
-        border-top: 1px solid #333
+        border-top: 1px solid #333;
+        width: 100%;
       }
 
       footer a {
         color: #f9cb28;
         text-decoration: none;
-        transition: color .3s
+        transition: color .3s;
       }
 
       footer a:hover {
         color: #ff4d4d;
-        text-decoration: underline
+        text-decoration: underline;
       }
 
       .footer-content {
@@ -135,45 +147,113 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        gap: 5px
+        gap: 5px;
       }
 
-      @media (max-width:768px) {
-        .widgets-container {
-          flex-direction: column
-        }
+      p {
+        font-size: 1em;
+        line-height: 1.5;
+        margin: 0 auto 20px;
+        text-align: center;
+        max-width: 800px;
+        padding: 0 20px;
+      }
 
+      /* Мобильные стили */
+      @media (max-width: 768px) {
+        .page-container {
+          padding: 0 15px;
+        }
+        
         h1 {
-          font-size: 2em
+          font-size: 1.8em;
+          margin: 30px 0;
+        }
+        
+        .epic-title::before,
+        .epic-title::after {
+          width: 20vw;
+          height: 3px;
+          animation-duration: 1.5s;
+          animation-delay: .3s;
+        }
+        
+        .epic-title::before {
+          margin-right: 10px;
+        }
+        
+        .epic-title::after {
+          margin-left: 10px;
+        }
+        
+        .widgets-container {
+          flex-direction: column;
+          margin: 30px 0;
+          animation-duration: 0.8s;
+          animation-delay: 1.5s;
+          gap: 15px;
+        }
+        
+        .discussion-header {
+          font-size: 1.2em;
+          padding: 8px;
+        }
+        
+        footer {
+          padding: 15px;
+          font-size: 0.8em;
+        }
+        
+        p {
+          text-align: left;
+          padding: 0 10px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .page-container {
+          padding: 0 10px;
+        }
+        
+        h1 {
+          font-size: 1.5em;
+          margin: 20px 0;
+        }
+        
+        .discussion-header {
+          font-size: 1em;
+        }
+        
+        footer {
+          font-size: 0.75em;
         }
       }
     </style>
   </head>
   <body>
-    <div class="content">
-      <h1>
-        <span class="epic-title">Я - FerrumVega</span>
-      </h1>
-      <p>Весь контент, размещённый на этом сайте, целиком и полностью принадлежит FerrumVega. Сайт находится под MIT лицензией.</p>
-    </div>
-    <div class="widgets-container">
-      <div class="telegram-widget">
-        <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="ferrumvega/4" data-width="100%" data-color="343638" data-dark="1" data-dark-color="FFFFFF"></script>
+    <div class="page-container">
+      <div class="content">
+        <h1>
+          <span class="epic-title">Я - FerrumVega</span>
+        </h1>
+        <p>Весь контент, размещённый на этом сайте, целиком и полностью принадлежит FerrumVega. Сайт находится под MIT лицензией.</p>
       </div>
-      <div class="telegram-widget">
-        <div class="discussion-header">Напишите FerrumVega в комментариях!</div>
-        <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion="FerrumVega/39" data-comments-limit="5" data-colorful="1" data-color="343638" data-dark="1" data-dark-color="FFFFFF"></script>
-      </div>
-    </div>
-    <footer>
-      <div class="footer-content">
-        <div>© 2025 FerrumVega. Все права защищены.</div>
-        <div>Контактная почта: <a href="mailto:me@ferrumvega.xyz">me@ferrumvega.xyz</a>
+      <div class="widgets-container">
+        <div class="telegram-widget">
+          <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="ferrumvega/4" data-width="100%" data-color="343638" data-dark="1" data-dark-color="FFFFFF"></script>
         </div>
-        <div>
-          <a href="https://telegra.ph/FerrumVega-01-08" target="_blank">Отказ от ответственности</a>
+        <div class="telegram-widget">
+          <div class="discussion-header">Напишите FerrumVega!</div>
+          <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion="FerrumVega/39" data-comments-limit="5" data-colorful="1" data-color="343638" data-dark="1" data-dark-color="FFFFFF"></script>
         </div>
       </div>
-    </footer>
+      <footer>
+        <div class="footer-content">
+          <div>© 2025 FerrumVega. Все права защищены.</div>
+          <div>Контактная почта: <a href="mailto:me@ferrumvega.xyz">me@ferrumvega.xyz</a></div>
+          <div><a href="https://telegra.ph/FerrumVega-01-08" target="_blank">Отказ от ответственности</a></div>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
